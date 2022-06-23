@@ -6,12 +6,23 @@ window.addEventListener('load', ()=> {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+
         const task = input.value;
         const task_el = document.createElement('div');
         task_el.classList.add('task');  
         
         const task_content_el = document.createElement('div');
         task_content_el.classList.add('content'); 
+
+
+
+
+
+        const ordered_li = document.createElement('tasks');
+        ordered_li.classList.add('li');
+        ordered_li.appendChild(task_el);
+        list_el.appendChild(ordered_li);
+
 
         task_el.appendChild(task_content_el);
 
@@ -40,8 +51,16 @@ window.addEventListener('load', ()=> {
 
         task_el.appendChild(task_action_el);
 
-        input.value='';
+        input.value="";
 
+        list_el.appendChild(task_el);
+
+        
+        var node = document.createElement("li");
+        node.appendChild(task_el);
+        list_el.appendChild(node);
+
+        
         list_el.appendChild(task_el);
 
         task_edit_el.addEventListener('click', (e)=>{
@@ -57,6 +76,7 @@ window.addEventListener('load', ()=> {
 
         task_del_el.addEventListener('click', (e)=>{
             list_el.removeChild(task_el);
+            list_el.removeChild(node);
         });
 
     });
